@@ -16,16 +16,19 @@
 <head>
 <body>
     <div class="content">
-    <audio id="myAudio"></audio>
+    <audio id="myAudio" preload="none"></audio>
         <mdui-dialog class="example-headline-slot">
             <span slot="headline">技术宅拯救世界<br>TECH OTAKUS SAVE THE WORLD<br>技術オタクが世界を救う</span>
             <mdui-button slot="action" variant="tonal" onclick="dialog.open = false;
-            var m=0,n=3
+            var m=0,n=6
             var x=Math.random()*(m-n)+n;
             x=Math.round(x)
             s='src/music/抽卡.mp3';
             if(x==2) s='src/music/60%的日常.mp3';
             else if(x==3)s='src/music/TimeToPlay.mp3'
+            else if(x==4)s='src/music/SeafloorPetal.mp3'
+            else if(x==5)s='src/music/60%的日常悠闲.mp3'
+            else if(x==6)s='src/music/60%的日常自由.mp3'
             localStorage.setItem('music',s);
             console.log(x,' ',s);
             document.getElementById('myAudio').src=s;
@@ -58,9 +61,31 @@
         <li><a href="https://music.mizuhara37.icu"><span class="i-Timeline"></span>MUSIC</a></li>
         <li><a href="https://games.mizuhara37.icu"><span class="i-Localisations"></span>GAMES</a></li>
         <li><a onclick=""><span class="i-Personnages"></span>ME</a></li>
+        <li><a onclick="dialog2.open = true"><span class="i-Personnages"></span>MUSIC PLAYER≡</a></li>
     </ul>
     </nav>
 </div>
+<mdui-dialog
+  stacked-actions
+  close-on-overlay-click
+  headline="MUSIC PLAYER"
+  class="example-stacked-actions"
+>
+  <mdui-button slot="action" variant="text" onclick="document.getElementById('myAudio').src='src/music/抽卡.mp3';document.getElementById('myAudio').play()">抽卡 - ZZZ</mdui-button>
+  <mdui-button slot="action" variant="text" onclick="document.getElementById('myAudio').src='src/music/60%的日常.mp3';document.getElementById('myAudio').play()">60%的日常 - ZZZ</mdui-button>
+  <mdui-button slot="action" variant="text" onclick="document.getElementById('myAudio').src='src/music/60%的日常自由.mp3';document.getElementById('myAudio').play()">60%的日常·自由 - ZZZ</mdui-button>
+  <mdui-button slot="action" variant="text" onclick="document.getElementById('myAudio').src='src/music/60%的日常悠闲.mp3';document.getElementById('myAudio').play()">60%的日常·悠闲 - ZZZ</mdui-button>
+  <mdui-button slot="action" variant="text" onclick="document.getElementById('myAudio').src='src/music/TimeToPlay.mp3';document.getElementById('myAudio').play()">Time To Play - ZZZ</mdui-button>
+  <mdui-button slot="action" variant="text" onclick="document.getElementById('myAudio').src='src/music/SeafloorPetal.mp3';document.getElementById('myAudio').play()">Seafloor Petal - YoruKura</mdui-button>
+</mdui-dialog>
+
+
+<script>
+  const dialog2 = document.querySelector(".example-stacked-actions");
+  const musicdia = dialog.nextElementSibling;
+
+  musicdia.addEventListener("click", () => dialog2.open = true);
+</script>
     <div class="contenu">
         <h1>Mizuhara37<br/>星野ミズハラ</h1>
             <p>
